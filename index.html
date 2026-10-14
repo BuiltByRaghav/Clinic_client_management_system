@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePoint Clinic - Local Clinic Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- NAVIGATION HEADER -->
+    <header>
+        <div class="logo">CarePoint <span class="plus">+</span></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#doctors">Doctors</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons">
+            <button id="themeToggle" class="theme-toggle-btn" title="Toggle Theme">🌙 Dark</button>
+            <a href="registration.html" class="btn-primary">Book Appointment</a>
+            <a href="doctor.html" class="btn-secondary">Doctor Login</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">✨ Healthcare Simplified</span>
+            <h1>Your Health, Our Top Priority</h1>
+            <p>Quality healthcare and easy online appointment booking for all your everyday medical needs.</p>
+            <div class="hero-actions">
+                <a href="registration.html" class="btn-primary">Book Appointment</a>
+                <a href="#doctors" class="btn-outline">Meet Our Doctors</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about animate-on-scroll">
+        <h2>About CarePoint Clinic</h2>
+        <p class="section-desc">CarePoint Clinic is a trusted local healthcare provider committed to offering compassionate, reliable, and accessible medical services for individuals and families in our community.</p>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services animate-on-scroll">
+        <h2>Our Medical Services</h2>
+        <p class="sub-text">Comprehensive care designed around your family's health requirements.</p>
+        <div class="service-cards">
+            <div class="card service-card">
+                <div class="card-icon">🩺</div>
+                <h3>General Checkup</h3>
+                <p>Routine diagnostic exams, preventive consultations, and wellness checks.</p>
+            </div>
+            <div class="card service-card">
+                <div class="card-icon">👶</div>
+                <h3>Pediatrics</h3>
+                <p>Specialized healthcare and immunization plans for infants, kids, and teens.</p>
+            </div>
+            <div class="card service-card">
+                <div class="card-icon">🧪</div>
+                <h3>Lab Diagnostics</h3>
+                <p>Fast, reliable blood testing, urine analysis, and pathology reports.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOCTORS SECTION -->
+    <section id="doctors" class="doctors animate-on-scroll">
+        <h2>Meet Our Specialist Doctors</h2>
+        <p class="sub-text">Click on any doctor card to view their complete profile and medical statistics.</p>
+        
+        <div class="doctor-cards">
+            
+            <div class="card doctor-card" onclick="openDoctorModal('sarah')">
+                <div class="doc-badge">Senior Physician</div>
+                <div class="doc-avatar">👩‍⚕️</div>
+                <h3>Dr. Sarah Jenkins</h3>
+                <p class="specialty">General Physician (MBBS, MD)</p>
+                <p class="exp">10+ Years Experience</p>
+                <div class="click-hint">Click for profile & stats &rarr;</div>
+            </div>
+
+            <div class="card doctor-card" onclick="openDoctorModal('rahul')">
+                <div class="doc-badge">Pediatric Specialist</div>
+                <div class="doc-avatar">👨‍⚕️</div>
+                <h3>Dr. Rahul Patel</h3>
+                <p class="specialty">Pediatrician (MBBS, DCH)</p>
+                <p class="exp">8+ Years Experience</p>
+                <div class="click-hint">Click for profile & stats &rarr;</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DOCTOR PROFILE MODAL -->
+    <div id="doctorModal" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+            <span class="modal-close" onclick="closeDoctorModal()">&times;</span>
+            <div id="modalDoctorContent">
+                <!-- Content inserted via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 CarePoint Clinic. Local Clinic Management System Project.</p>
+    </footer>
+
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - CarePoint</title>
+    <link rel="stylesheet" href="css/doctor.css">
+</head>
+<body>
+
+    <header class="dash-header">
+        <div class="logo">CarePoint <span class="plus">+</span> | Doctor Portal</div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <button id="themeToggle" class="theme-toggle-btn">🌙 Dark</button>
+            <a href="index.html" class="nav-link">&larr; Main Website</a>
+            <button id="logoutBtn" class="logout-btn" style="display: none;" onclick="logoutDoctor()">Log Out</button>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- LOGIN SECTION -->
+        <section id="loginSection" class="auth-card">
+            <h2>Doctor Portal Login</h2>
+            <p class="subtitle">Select or enter doctor credentials to view dashboard</p>
+
+            <div id="loginError" class="alert-error" style="display: none;">
+                Invalid Doctor Username or Password!
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Doctor Username / ID</label>
+                    <input type="text" id="username" placeholder="sarah or rahul" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+
+                <button type="submit" class="btn-primary-block">Sign In</button>
+            </form>
+
+            <div class="demo-credentials">
+                <p><strong>Demo Logins:</strong></p>
+                <small>1. <code>sarah</code> / <code>jenkins123</code> (Dr. Sarah Jenkins)</small><br>
+                <small>2. <code>rahul</code> / <code>patel123</code> (Dr. Rahul Patel)</small>
+                <div style="display: flex; gap: 8px; margin-top: 10px;">
+                    <button class="btn-demo" onclick="quickLogin('sarah', 'jenkins123')">Login as Dr. Sarah</button>
+                    <button class="btn-demo" onclick="quickLogin('rahul', 'patel123')">Login as Dr. Rahul</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- DASHBOARD SECTION -->
+        <section id="dashboardSection" style="display: none;">
+            
+            <div class="welcome-bar">
+                <div>
+                    <h2 id="doctorTitle">Doctor Dashboard</h2>
+                    <p id="welcomeText" class="subtitle">Managing patient schedule</p>
+                </div>
+                <button class="btn-secondary" onclick="seedSampleData()">+ Load Demo Appointments</button>
+            </div>
+
+            <!-- METRIC CARDS -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-num" id="statTotal">0</span>
+                    <span class="stat-label">Assigned Bookings</span>
+                </div>
+                <div class="stat-card warning">
+                    <span class="stat-num" id="statPending">0</span>
+                    <span class="stat-label">Pending</span>
+                </div>
+                <div class="stat-card success">
+                    <span class="stat-num" id="statCompleted">0</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+                <div class="stat-card danger">
+                    <span class="stat-num" id="statCancelled">0</span>
+                    <span class="stat-label">Cancelled</span>
+                </div>
+            </div>
+
+            <!-- CONTROLS -->
+            <div class="table-controls">
+                <input type="text" id="searchInput" placeholder="Search by patient name or phone..." onkeyup="filterAppointments()">
+                <div>
+                    <label for="statusFilter">Status Filter: </label>
+                    <select id="statusFilter" onchange="filterAppointments()">
+                        <option value="ALL">All Statuses</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Cancelled">Cancelled</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- TABLE -->
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Age</th>
+                            <th>Phone</th>
+                            <th>Assigned Doctor</th>
+                            <th>Date & Time</th>
+                            <th>Status</th>
+                            <th>Clinical Notes</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- NOTES MODAL -->
+    <div id="notesModal" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h3 style="color: var(--primary-color);">Clinical Observations / Prescription</h3>
+            <p id="modalPatientInfo" style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">Patient: -</p>
+            <textarea id="notesInput" rows="5" placeholder="Write medical diagnosis or notes..." style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); margin-bottom: 15px;"></textarea>
+            <div style="text-align: right; gap: 10px; display: flex; justify-content: flex-end;">
+                <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn-primary" onclick="saveNotes()">Save Notes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/doctor.js"></script>
+</body>
+</html>

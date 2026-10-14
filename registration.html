@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - CarePoint</title>
+    <link rel="stylesheet" href="css/registration.css">
+</head>
+<body>
+    
+    <header class="nav-bar">
+        <a href="index.html" class="back-link">&larr; Back to Home</a>
+        <div class="logo">CarePoint <span class="plus">+</span></div>
+        <button id="themeToggle" class="theme-toggle-btn">🌙 Dark</button>
+    </header>
+
+    <div class="form-container">
+        <h2>Book an Appointment</h2>
+        <p class="subtitle">Please enter your patient details to schedule a visit.</p>
+
+        <form id="appointmentForm">
+            <div class="form-group">
+                <label for="patientName">Patient Full Name:</label>
+                <input type="text" id="patientName" placeholder="e.g. John Doe" required>
+            </div>
+
+            <div class="form-group row">
+                <div>
+                    <label for="patientAge">Age:</label>
+                    <input type="number" id="patientAge" placeholder="e.g. 28" required>
+                </div>
+                <div>
+                    <label for="patientPhone">Phone Number:</label>
+                    <input type="tel" id="patientPhone" placeholder="e.g. 9876543210" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="doctorName">Select Preferred Doctor:</label>
+                <select id="doctorName" required>
+                    <option value="">-- Select Specialist --</option>
+                    <option value="Dr. Sarah Jenkins">Dr. Sarah Jenkins (General Physician)</option>
+                    <option value="Dr. Rahul Patel">Dr. Rahul Patel (Pediatrician)</option>
+                </select>
+            </div>
+
+            <div class="form-group row">
+                <div>
+                    <label for="appointmentDate">Preferred Date:</label>
+                    <input type="date" id="appointmentDate" required>
+                </div>
+                <div>
+                    <label for="appointmentTime">Preferred Time:</label>
+                    <input type="time" id="appointmentTime" required>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Confirm Booking</button>
+        </form>
+    </div>
+
+    <script src="js/registration.js"></script>
+</body>
+</html>
